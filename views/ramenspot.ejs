@@ -1,16 +1,30 @@
 <% include /partials/header %>
 
-<h1>This is Locations Page</h1>
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			<h1>Welocme to Ramen Hall</h1>
+				<p>View Ramen Around Town!</p>
+				<p>
+						<a class="btn btn-primary btn-md" href="/ramenspot/new">Add New Ramen Location</a>
+				</p>
+		</div>
+		
+	</header>
 
-<a href="/ramenspot/new">Add new ramen location</a>
-
-<% locations.forEach(function(location){ %>
-	<div>
-
-		<h4><%= location.name %></h4>
-		<img src="<%= location.image %>">
-
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+			<% locations.forEach(function(location){ %>
+				<div class="col-md-3 col-sm-6">
+					<div class="thumbnail">
+							<img src="<%= location.image %>">
+						<div class="caption">
+							<h4><%= location.name %></h4>
+						</div>
+					</div>
+							
+			</div>
+			<% }); %>
 	</div>
-<% }) %>
+</div>
 
 <% include /partials/footer %>
