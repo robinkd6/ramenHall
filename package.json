@@ -1,0 +1,25 @@
+{
+  "name": "ramenhall",
+  "version": "1.0.0",
+  "description": "App about the ramen in seattle",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinkd6/ramenHall.git"
+  },
+  "author": "Robin Cruz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robinkd6/ramenHall/issues"
+  },
+  "homepage": "https://github.com/robinkd6/ramenHall#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "nodemon": "^1.10.2"
+  }
+}

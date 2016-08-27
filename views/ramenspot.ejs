@@ -1,0 +1,16 @@
+<% include /partials/header %>
+
+<h1>This is Locations Page</h1>
+
+<a href="/ramenspot/new">Add new ramen location</a>
+
+<% locations.forEach(function(location){ %>
+	<div>
+
+		<h4><%= location.name %></h4>
+		<img src="<%= location.image %>">
+
+	</div>
+<% }) %>
+
+<% include /partials/footer %>
