@@ -1,22 +1,17 @@
 var express          = require("express"),
 		app							 = 	express(),
 		bodyParser			 = require("body-parser"),
-		mongoose 				 = require("mongoose");
+		mongoose 				 = require("mongoose"),
+		Ramen			       = require("./models/ramen");
+		seedDB					 = require("./seeds");
 
 
+
+seedDB();
 mongoose.connect("mongodb://localhost/ramen_hall");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-
-//schema set up
-var ramenSchema = new mongoose.Schema({
-	name: String,
-	image: String,
-	description: String
-});
-
-var Ramen = mongoose.model("Ramen", ramenSchema);
 
 // Ramen.create(
 // 	{ 
@@ -44,7 +39,7 @@ app.get("/ramenspot", function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			res.render("ramenspot", {locations: rLocations});
+			res.render("ramenspot", {rlocations: rLocations});
 		}
 	});
 	
@@ -54,9 +49,11 @@ app.get("/ramenspot", function(req, res){
 app.post("/ramenspot", function(req, res){
 	var name = req.body.name;
 	var image = req.body.image;
+	var desc = req.body.description;
 	var newrLocation = {
 		name: name,
-		image: image
+		image: image,
+		description: desc
 	};
 	//create new ramen location and save to db
 	Ramen.create(newrLocation, function(err, newlyCreated){
@@ -76,7 +73,13 @@ app.get("/ramenspot/new", function (req, res){
 
 //SHOW - displays info about ramen
 app.get("/ramenspot/:id", function(req, res){
-	res.send(show);
+	Ramen.findById(req.params.id, function(err, foundrLocation){
+		if(err){
+			console.log(err);
+		} else {
+			res.render("show", {ramen: foundrLocation});
+		}
+	});
 });
 
 app.listen(3000);
