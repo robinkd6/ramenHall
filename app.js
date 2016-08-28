@@ -4,6 +4,9 @@ var express          = require("express"),
 		mongoose 				 = require("mongoose"),
 		Ramen			       = require("./models/ramen");
 		seedDB					 = require("./seeds");
+		Comment 				 = require("./models/comment")
+
+
 
 
 
