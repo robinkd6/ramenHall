@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-
+//ASSOCIATE MODELS!!
 var ramenSchema = new mongoose.Schema({
 	name: String,
 	image: String,

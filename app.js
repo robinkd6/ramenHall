@@ -10,25 +10,11 @@ var express          = require("express"),
 
 
 
-seedDB();
 mongoose.connect("mongodb://localhost/ramen_hall");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-
-
-// Ramen.create(
-// 	{ 
-// 		name: "Kizuki Ramen & Izakaya",
-// 		image: "http://www.seattleglobalist.com/wp-content/uploads/2015/03/ramen-kukai.jpg",
-// 		description: "Miso Garlic Tonkatsu Ramen with 2 eggs"
-// 	}, function(err, ramen) {
-// 		if(err){
-// 			console.log(err);
-// 		} else {
-// 			console.log("NEWLY CREATED RAMEN");
-// 			console.log(ramen);
-// 		}
-// 	});
+//use to start file
+seedDB();
 
 
 app.get("/", function(req, res) {
@@ -42,7 +28,7 @@ app.get("/ramenspot", function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			res.render("ramenspot", {rlocations: rLocations});
+			res.render("ramenLocation/ramenspot", {rlocations: rLocations});
 		}
 	});
 	
@@ -63,7 +49,7 @@ app.post("/ramenspot", function(req, res){
 		if(err) {
 			console.log(err);
 		} else {
-			res.redirect("/ramenspot")
+			res.redirect("/ramenspot");
 		}
 	});
 });
@@ -71,19 +57,52 @@ app.post("/ramenspot", function(req, res){
 
 //NEW - show form to create new ramen spot
 app.get("/ramenspot/new", function (req, res){
-		res.render("new.ejs")
+		res.render("ramenLocation/new");
 });
 
 //SHOW - displays info about ramen
 app.get("/ramenspot/:id", function(req, res){
-	Ramen.findById(req.params.id, function(err, foundrLocation){
+	//find ramen spot with provided ID + comments
+	Ramen.findById(req.params.id).populate("comments").exec(function(err, foundrLocation){
 		if(err){
 			console.log(err);
 		} else {
-			res.render("show", {ramen: foundrLocation});
+			console.log(foundrLocation);
+			//render info on ramen location
+			res.render("ramenLocation/show", {ramen: foundrLocation});
 		}
 	});
 });
+
+// =======================
+// Comments routes
+// =======================
+app.get("/ramenspot/:id/comments/new", function(req, res){
+	//find by id for new comments to use
+	Ramen.findById(req.params.id, function(err, ramen){
+		if(err){
+			console.log(err);
+		} else {
+			res.render("comments/new", {ramen: ramen});
+		}
+	});
+});
+
+app.post("/ramenspot/:id/comments", function(req, res){
+	//lookup campground using id
+	Ramen.findById(req.params.id, function(err, ramen){
+		if(err){
+			console.log(err);
+			res.redirect("/ramenspot");
+		} else {
+			console.log(req.body.comment, function(err, comment){
+				if(err){
+					console.log(err)
+				}
+			})
+		}
+	})
+})
 
 app.listen(3000);
 
