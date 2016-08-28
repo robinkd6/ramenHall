@@ -2,9 +2,10 @@ var express          = require("express"),
 		app							 = 	express(),
 		bodyParser			 = require("body-parser"),
 		mongoose 				 = require("mongoose"),
-		Ramen			       = require("./models/ramen");
+		Ramen			       = require("./models/ramen"),
+		Comment 				 = require("./models/comment"),
 		seedDB					 = require("./seeds");
-		Comment 				 = require("./models/comment")
+
 
 
 
@@ -16,6 +17,8 @@ app.set("view engine", "ejs");
 //use to start file
 seedDB();
 
+//serving public file
+app.use(express.static(__dirname + "/public"));
 
 app.get("/", function(req, res) {
 			res.render("landing");
@@ -95,14 +98,18 @@ app.post("/ramenspot/:id/comments", function(req, res){
 			console.log(err);
 			res.redirect("/ramenspot");
 		} else {
-			console.log(req.body.comment, function(err, comment){
+			Comment.create(req.body.comment, function(err, comment){
 				if(err){
-					console.log(err)
+					console.log(err);
+				} else {
+					ramen.comments.push(comment);
+					ramen.save();
+					res.redirect('/ramenspot/' + ramen._id);
 				}
-			})
+			});
 		}
-	})
-})
+	});
+});
 
 app.listen(3000);
 

@@ -1,14 +1,53 @@
 <% include /partials/header %>
 
-<h1><%= ramen.name %></h1>
-<img src="<%= ramen.image %>">
-<p><%= ramen.description %></p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">Ramen Hall</p>
+			<div class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="thumbnail">
+				<img class="img-responsive" src="<%= ramen.image %>">
+				<div class="caption-full">
+					<h4 class="pull-right">$12.25</h4>
+					<h4><a href=>
+						<%= ramen.name %>
+					</a></h4>
+					<p><%= ramen.description %></p>
+				</div>
+			</div>
+			<div class="well">
+				<div class="text-right">
+					<a class="btn btn-success" href="/ramenspot/<%= ramen._id %>/comments/new">Add New Comment</a>
+				</div>
+				<hr>
+					<% ramen.comments.forEach(function(comment){ %>
+						<div class="row">
+							<div class="col-md-12">
+								<strong><%= comment.author %></strong>
+								<span class="pull-right">9 Days ago</span>
+								<p>
+									<%= comment.text %> 
+								</p>
+							</div>
+						</div>
+					
+				<% }) %>
 
-<% ramen.comments.forEach(function(comment){ %>
-	<p>
-		<strong> <%= comment.author %> </strong> - <%= comment.text %> 
-		</p>
-<% }) %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
 
 
 
