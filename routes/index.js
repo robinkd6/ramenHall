@@ -16,11 +16,11 @@ router.post("/signup", function(req, res){
 	var newUser = new User({firstname: req.body.firstname, lastname: req.body.lastname, username: req.body.username});
 	User.register(newUser, req.body.password, function(err, user){
 		if(err){
-			console.log(err);
+			req.flash("error", err);
 			return res.render("signup");
 		} 
 		passport.authenticate("local")(req, res, function() {
-			console.log("created new user");
+			req.flash("success", "Welcome to RamenHall " + user.username);
 			res.redirect("/ramenspot");
 		});
 	});
@@ -29,7 +29,7 @@ router.post("/signup", function(req, res){
 //show login form
 router.get("/login", function(req, res)
 {
-	res.render("login", {message: req.flash("error")});
+	res.render("login");
 });
 //Middleware = passport.authenticate + login logic
 router.post("/login", passport.authenticate("local", 
@@ -44,19 +44,12 @@ router.post("/login", passport.authenticate("local",
 //logout route
 router.get('/logout', function(req, res)
 {
-	req.logout();	
+	req.logout();
+	req.flash("success", "Logged you out");
 	// var _LoggedIn = (req.isAuthenticated() ? true : false);
 	res.redirect("/ramenspot");
 });
 
 
-//middleware
-function isLoggedIn(req, res, next)
-{
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
 
 module.exports = router;

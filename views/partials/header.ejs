@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 </head>
 <body>
-<div class="container">
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -29,4 +29,16 @@
 		</div>	
 		
 	</nav>
-</div>	
+	<div class="container">
+		<% if(error && error.length > 0){ %>
+			<div class="alert alert-danger" role="alert">
+				<%= error %>
+			</div>
+		<% } %>
+		<% if(success && success.length > 0){ %>
+		<div class="alert alert-success" role="success">
+			<%= success %>
+		</div>
+		<% } %>
+	</div>
+	

@@ -27,6 +27,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 		} else {
 			Comment.create(req.body.comment, function(err, comment){
 				if(err){
+					req.flash("error", "Unable to post comment");
 					console.log(err);
 				} else {
 					//add uesrname and id to comment
@@ -37,6 +38,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 					ramen.comments.push(comment);
 					ramen.save();
 					console.log(comment);
+					req.flash("success", "Comment added");
 					res.redirect('/ramenspot/' + ramen._id);
 				}
 			});
@@ -71,6 +73,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
 		if(err){
 			res.redirect("back");
 		} else {
+			req.flash("success", "Comment deleted");
 			res.redirect("/ramenspot/" + req.params.id);
 		}
 	});
