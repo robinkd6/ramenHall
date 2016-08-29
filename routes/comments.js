@@ -43,8 +43,19 @@ router.post("/", function(req, res){
 	});
 });
 
+//comments edit route
 router.get("/:comment_id/edit", function(req, res){
-	res.send("edit rotue for comment");
+	Comment.findById(req.params.comment_id, function(err, foundComment){
+		if(err){
+			res.redirect("back");
+		} else {
+			res.render("comments/edit", {ramen_id: req.params.id, comment: foundComment} );
+		}
+	});
+});
+//comment udpate
+router.put("/:comment_id", function(req, res){
+	res.send("hit update route")
 })
 
 //middleware
