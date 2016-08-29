@@ -1,6 +1,7 @@
-var express = require("express");
-var router 	= express.Router();
-var Ramen   = require("../models/ramen");
+var express 	 = require("express");
+var router 		 = express.Router();
+var Ramen   	 = require("../models/ramen");
+var middleware = require("../middleware/index.js");
 
 //rLocations = ramen locations
 router.get("/", function(req, res){
@@ -16,7 +17,7 @@ router.get("/", function(req, res){
 });
 
 
-router.post("/", isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 	var name = req.body.name;
 	var image = req.body.image;
 	var desc = req.body.description;
@@ -44,7 +45,7 @@ router.post("/", isLoggedIn, function(req, res){
 
 
 //NEW - show form to create new ramen spot
-router.get("/new", isLoggedIn, function (req, res){
+router.get("/new", middleware.isLoggedIn, function (req, res){
 		res.render("ramenLocation/new");
 });
 
@@ -63,7 +64,7 @@ router.get("/:id", function(req, res){
 });
 
 //edit ramen location route
-router.get("/:id/edit", checkRamenOwnership, function(req, res){
+router.get("/:id/edit", middleware.checkRamenOwnership, function(req, res){
 	Ramen.findById(req.params.id, function(err, foundrLocation)
 		{ 
 		res.render("ramenLocation/edit", {ramen: foundrLocation});
@@ -83,7 +84,7 @@ router.put("/:id", function(req, res){
 });
 
 //destroy ramen route
-router.delete("/:id", checkRamenOwnership, function(req, res){
+router.delete("/:id", middleware.checkRamenOwnership, function(req, res){
 	Ramen.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redired("/ramenspot");
@@ -92,31 +93,7 @@ router.delete("/:id", checkRamenOwnership, function(req, res){
 		}
 	});
 });
-//middleware
-function isLoggedIn(req, res, next)
-{
-	if(req.isAuthenticated()){
-		return next();
-	}
-	res.redirect("/login");
-}
 
-function checkRamenOwnership(req, res, next) {
-		if(req.isAuthenticated()){
-			Ramen.findById(req.params.id, function(err, foundrLocation){
-				if (err){
-					res.redirect("back");
-				} else {
-					 if(foundrLocation.author.id.equals(req.user._id)) {
-					 	next();
-					 } else {
-					 		res.redirect('back');
-					 }
-					}
-			});
-		} else {
-			res.redirect('back');
-		};
-}
+
 
 module.exports = router;
