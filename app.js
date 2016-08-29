@@ -20,8 +20,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/ramen_hall");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-//use to start file
-seedDB();
+//seed the database + start file
+// seedDB();
 
 //serving public file
 app.use(express.static(__dirname + "/public"));

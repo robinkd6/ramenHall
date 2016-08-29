@@ -23,35 +23,35 @@ var data = [
 
 function seedDB() {
 	Ramen.remove({}, function(err){
-		if(err){
-			console.log(err);
-		}
-		console.log("Removed ramen locations!");
-			//add ramen locations
-			data.forEach(function(seed){
-			Ramen.create(seed, function(err, ramen){
-				if(err){
-					console.log(err);
-				} else {
-					console.log("Added Ramen!");
-					//create comment
-					Comment.create(
-					{
-						text: "This place is awesome - I love Ramen",
-						author: "Kobe Bryant"
-					}, function(err, comment){
-							if(err) {
-								console.log(err);
-							} else {
-								ramen.comments.push(comment);
-								ramen.save();
-							console.log("Created new comment");
-						}
+		// if(err){
+		// 	console.log(err);
+		// }
+		// console.log("Removed ramen locations!");
+		// 	//add ramen locations
+		// 	data.forEach(function(seed){
+		// 	Ramen.create(seed, function(err, ramen){
+		// 		if(err){
+		// 			console.log(err);
+		// 		} else {
+		// 			console.log("Added Ramen!");
+		// 			//create comment
+		// 			Comment.create(
+		// 			{
+		// 				text: "This place is awesome - I love Ramen",
+		// 				author: "Kobe Bryant"
+		// 			}, function(err, comment){
+		// 					if(err) {
+		// 						console.log(err);
+		// 					} else {
+		// 						ramen.comments.push(comment);
+		// 						ramen.save();
+		// 					console.log("Created new comment");
+		// 				}
 						
-					});
-				}
-			});
-		});
+		// 			});
+		// 		}
+		// 	});
+		// });
 	});
 
 }

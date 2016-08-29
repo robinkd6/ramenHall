@@ -28,8 +28,14 @@ router.post("/", function(req, res){
 				if(err){
 					console.log(err);
 				} else {
+					//add uesrname and id to comment
+					comment.author.id = req.user._id;
+					comment.author.username = req.user.username;
+					//save comment
+					comment.save();
 					ramen.comments.push(comment);
 					ramen.save();
+					console.log(comment);
 					res.redirect('/ramenspot/' + ramen._id);
 				}
 			});
