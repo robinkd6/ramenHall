@@ -24,6 +24,12 @@
 					<em>Submitted By <%= ramen.author.username %></em>
 						
 					</p>
+						<% if (currentUser && ramen.author.id.equals(currentUser._id)){ %>
+									<a class="btn btn-xs btn-primary" href="/ramenspot/<%= ramen._id %>/edit">Edit</a>
+									<form id="delete-form" action="/ramenspot/<%= ramen._id %>?_method=DELETE" method="POST">
+									<button class="btn btn-xs btn-danger">Delete</button>
+								</form>
+							<% } %>
 				</div>
 			</div>
 			<div class="well">

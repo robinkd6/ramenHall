@@ -7,16 +7,15 @@
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 90px;
 }
 
 .navbar {
 	font-family: 'Lato', sans-serif;
 	background: #c0392b;
-	padding: 20px;
+	padding: 15px;
 	font-weight: 100;
 	border: none;
-	margin-bottom: 30px;
 }
 .navbar .navbar-brand {
 	color: #ecf0f1;
@@ -39,6 +38,10 @@ body {
 
 .thumbnail .caption-full {
 	padding: 15px;
+}
+
+#delete-form {
+	display: inline;
 }
 
 @media (max-width: 979px) {

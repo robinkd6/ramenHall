@@ -62,6 +62,36 @@ router.get("/:id", function(req, res){
 	});
 });
 
+//edit ramen location route
+router.get("/:id/edit", checkRamenOwnership, function(req, res){
+	Ramen.findById(req.params.id, function(err, foundrLocation)
+		{ 
+		res.render("ramenLocation/edit", {ramen: foundrLocation});
+		});
+});
+//update correct ramen location route
+router.put("/:id", function(req, res){
+	//find and update rLocation
+	Ramen.findByIdAndUpdate(req.params.id, req.body.ramen, function(err, updatedrLocation){
+		if(err){
+			res.redirect("/ramenspot");
+		} else {
+			res.redirect("/ramenspot/" + req.params.id);
+		}
+	});
+	//redirect
+});
+
+//destroy ramen route
+router.delete("/:id", checkRamenOwnership, function(req, res){
+	Ramen.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.redired("/ramenspot");
+		} else {
+			res.redirect("/ramenspot");
+		}
+	});
+});
 //middleware
 function isLoggedIn(req, res, next)
 {
@@ -69,6 +99,24 @@ function isLoggedIn(req, res, next)
 		return next();
 	}
 	res.redirect("/login");
+}
+
+function checkRamenOwnership(req, res, next) {
+		if(req.isAuthenticated()){
+			Ramen.findById(req.params.id, function(err, foundrLocation){
+				if (err){
+					res.redirect("back");
+				} else {
+					 if(foundrLocation.author.id.equals(req.user._id)) {
+					 	next();
+					 } else {
+					 		res.redirect('back');
+					 }
+					}
+			});
+		} else {
+			res.redirect('back');
+		};
 }
 
 module.exports = router;
