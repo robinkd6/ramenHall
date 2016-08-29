@@ -37,6 +37,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req, res, next) {
+	res.locals.currentUser = req.user;
+	//MOVE ONTO NEXT MIDDLEWARE
+	next();
+});
+
 app.get("/", function(req, res) {
 			res.render("landing");
 		});
@@ -48,7 +54,7 @@ app.get("/ramenspot", function(req, res){
 		if(err){
 			console.log(err);
 		} else {
-			res.render("ramenLocation/ramenspot", {rlocations: rLocations});
+			res.render("ramenLocation/ramenspot", {rlocations: rLocations, currentUser: req.user});
 		}
 	});
 	
@@ -164,8 +170,9 @@ app.post("/login", passport.authenticate("local",
 
 app.get('/logout', function(req, res)
 {
-	var _LoggedIn = (req.isAuthenticated() ? true : false);
-	res.redirect("/login");
+	req.logout();	
+	// var _LoggedIn = (req.isAuthenticated() ? true : false);
+	res.redirect("/ramenspot");
 });
 
 function isLoggedIn(req, res, next)
