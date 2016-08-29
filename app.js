@@ -97,7 +97,7 @@ app.get("/ramenspot/:id", function(req, res){
 // =======================
 // Comments routes
 // =======================
-app.get("/ramenspot/:id/comments/new", function(req, res){
+app.get("/ramenspot/:id/comments/new", isLoggedIn, function(req, res){
 	//find by id for new comments to use
 	Ramen.findById(req.params.id, function(err, ramen){
 		if(err){
@@ -146,6 +146,35 @@ app.post("/signup", function(req, res){
 		});
 	});
 });
+
+//show login form
+app.get("/login", function(req, res)
+{
+	res.render("login");
+});
+//Middleware = passport.authenticate + login logic
+app.post("/login", passport.authenticate("local", 
+{
+	successRedirect: "/ramenspot",
+	failureRedirect: "login"
+}), function(req, res) {
+	console.log("works");
+
+});
+
+app.get('/logout', function(req, res)
+{
+	var _LoggedIn = (req.isAuthenticated() ? true : false);
+	res.redirect("/login");
+});
+
+function isLoggedIn(req, res, next)
+{
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
 
 app.listen(3000);
 
