@@ -29,7 +29,7 @@ router.post("/signup", function(req, res){
 //show login form
 router.get("/login", function(req, res)
 {
-	res.render("login");
+	res.render("login", {message: req.flash("error")});
 });
 //Middleware = passport.authenticate + login logic
 router.post("/login", passport.authenticate("local", 

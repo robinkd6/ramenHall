@@ -5,6 +5,7 @@ var express          = require("express"),
 		passport				 = require("passport"),
 		LocalStrategy    = require("passport-local"),
 		methodOverride   = require("method-override"),
+		flash 					 = require("connect-flash"),
 		Ramen			       = require("./models/ramen"),
 		Comment 				 = require("./models/comment"),
 		User             = require("./models/user"),
@@ -22,6 +23,7 @@ mongoose.connect("mongodb://localhost/ramen_hall");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
+app.use(flash());
 //seed the database + start file
 // seedDB();
 
