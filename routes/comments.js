@@ -18,7 +18,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 });
 
 //create comments
-router.post("/", function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 	//lookup campground using id
 	Ramen.findById(req.params.id, function(err, ramen){
 		if(err){

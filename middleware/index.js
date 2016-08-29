@@ -1,7 +1,10 @@
-//all middleware goes here
-var middleWareObj = {};
 
-middleWareObj.checkRamenOwenership = function() {
+var Ramen   = require("../models/ramen");
+var Comment = require("../models/comment");
+//all middleware goes here
+var middlewareObj = {};
+
+middlewareObj.checkRamenOwnership = function(req, res, next) {
 		if(req.isAuthenticated()){
 			Ramen.findById(req.params.id, function(err, foundrLocation){
 				if (err){
@@ -19,7 +22,7 @@ middleWareObj.checkRamenOwenership = function() {
 		}
 };
 
-middleWareObj.checkCommentOwnership = function(req, res, next) {
+middlewareObj.checkCommentOwnership = function(req, res, next) {
 		if(req.isAuthenticated()){
 			Comment.findById(req.params.comment_id, function(err, foundrComment){
 				if (err){
@@ -37,11 +40,11 @@ middleWareObj.checkCommentOwnership = function(req, res, next) {
 		}
 };
 
-middleware.isLoggedIn = function(req, res, next) {
+middlewareObj.isLoggedIn = function(req, res, next) {
 	if(req.isAuthenticated()){
 		return next();
 	}
 	res.redirect("/login");
-	};
+};
 
-module.exports = middleWareObj;
+module.exports = middlewareObj;
