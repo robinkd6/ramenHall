@@ -2,15 +2,18 @@ var express          = require("express"),
 		app							 = 	express(),
 		bodyParser			 = require("body-parser"),
 		mongoose 				 = require("mongoose"),
+		passport				 = require("passport"),
+		LocalStrategy    = require("passport-local"),
 		Ramen			       = require("./models/ramen"),
 		Comment 				 = require("./models/comment"),
+		User             = require("./models/user"),
 		seedDB					 = require("./seeds");
 
 
 
 
 
-
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/ramen_hall");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -19,6 +22,20 @@ seedDB();
 
 //serving public file
 app.use(express.static(__dirname + "/public"));
+
+
+//passport configuration
+app.use(require("express-session")({
+	secret: "Black garlic ramen is better than miso",
+	resave: false,
+	saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get("/", function(req, res) {
 			res.render("landing");
@@ -108,6 +125,25 @@ app.post("/ramenspot/:id/comments", function(req, res){
 				}
 			});
 		}
+	});
+});
+
+//AUTH Routes
+app.get("/signup", function(req,res){
+	res.render("signup");
+});
+//signup logic
+app.post("/signup", function(req, res){
+	var newUser = new User({firstname: req.body.firstname, lastname: req.body.lastname, username: req.body.username});
+	User.register(newUser, req.body.password, function(err, user){
+		if(err){
+			console.log(err);
+			return res.render("signup");
+		} 
+		passport.authenticate("local")(req, res, function() {
+			console.log("created new user")
+			res.redirect("/ramenspot");
+		});
 	});
 });
 

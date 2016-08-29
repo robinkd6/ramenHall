@@ -1,7 +1,48 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,400,700,400italic,700italic);
+
+* {
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  font-family: 'Lato';
+}
+
+body {
+  padding-top: 60px;
+}
+
+.navbar {
+	font-family: 'Lato', sans-serif;
+	background: #c0392b;
+	padding: 20px;
+	font-weight: 100;
+	border: none;
+	margin-bottom: 30px;
+}
+.navbar .navbar-brand {
+	color: #ecf0f1;
+	font-size: 2.5em;
+	font-weight: 100;
+}
+/*special effect*/
+.navbar .navbar-brand:hover {
+	color: #000;
+}
+
+
 .thumbnail img {
 	width: 100%;
 }
 
 .thumbnail {
 	padding: 0;
+}
+
+.thumbnail .caption-full {
+	padding: 15px;
+}
+
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }
