@@ -89,6 +89,7 @@ hr {
 	font-weight: 300;
 	margin-left: 500px;
 	text-decoration: none;
+	position: fixed;
 }
 
 
@@ -110,14 +111,15 @@ html {
     /*font-family: "Lato";*/
 }
 
-@media (max-width: 979px) {
+@media (min-width : 320px) and (max-width: 767px) {
 	body{
 		padding-top: 60px;
 		padding-bottom: 60px
 	}
 
 	#howBtn, #try {
-		margin-left: 150px;
+		margin-left: 140px;
+		position: fixed; ;
 	}
 
 }
