@@ -6,9 +6,14 @@
 		<div class="col-md-3">
 			<p class="lead"><a href="/">Ramen Hall</a></p>
 			<div class="list-group">
-				<li class="list-group-item active">Info 1</li>
-				<li class="list-group-item">Info 2</li>
-				<li class="list-group-item">Info 3</li>
+				<li class="list-group-item"><%= ramen.name %></li>
+				<li class="list-group-item"><%= ramen.price %></li>
+				<li class="list-group-item"><%= ramen.location %></li>
+				<li class="list-group-item"><a id="returnHome" href="/ramenspot" style="text-align: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2em;
+    font-weight: 500";>Main Page</a></li>
 			</div>
 		</div>
 		<div class="col-md-9">
@@ -34,20 +39,23 @@
 				</div>
 			</div>
 			<div class="well">
+				<div class=text-left>
+					<h3><em>Comments</em></h3>
+				</div>
+				<hr>
 				<div class="text-right">
 					<a class="btn btn-success" href="/ramenspot/<%= ramen._id %>/comments/new">Add New Comment</a>
 				</div>
-				<hr>
 					<% ramen.comments.forEach(function(comment){ %>
 						<div class="row">
 							<div class="col-md-12">
 								<strong><%= comment.author.username %></strong>
-								<span class="pull-right">9 Days ago</span>
+								<span class="pull-right"></span>
 								<p>
 									<%= comment.text %> 
 								</p>
 							<% if (currentUser && comment.author.id.equals(currentUser._id)){ %>	
-								<a class="btn btn-xs btn-warning" href="/ramenspot/<%= ramen._id %>/comments/<%= comment._id %>/edit">Edit</a>
+								<a class="btn btn-xs btn-primary" href="/ramenspot/<%= ramen._id %>/comments/<%= comment._id %>/edit">Edit</a>
 								<form id="delete-form" action="/ramenspot/<%= ramen._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
 									<input type="submit" class="btn btn-xs btn-danger" value="Delete">
 								</form>

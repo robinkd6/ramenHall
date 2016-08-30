@@ -5,6 +5,7 @@ var ramenSchema = new mongoose.Schema({
 	name: String,
 	image: String,
 	description: String,
+	location: String,
 	price: String,
 	author: {
 		id: {
