@@ -31,7 +31,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
 				if (err){
 					res.redirect("back");
 				} else {
-					 if(foundComment.author.id.equals(req.user._id)) {
+					 if(foundrComment.author.id.equals(req.user._id)) {
 					 	next();
 					} else {
 							req.flash("error", "Action not authorized");

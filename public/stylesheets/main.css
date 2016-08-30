@@ -140,6 +140,10 @@ a.location {
 	text-decoration: none;
 	font-weight: 100;
 }
+.jumbotron {
+	border: 2px solid #000;
+	background-color: #ecf0f1;
+}
 
 #rsContainer {
 	text-align: center;
@@ -164,7 +168,7 @@ a .btn .btn-primary .btn-md {
 
 @media (max-width: 979px) {
   body {
-    padding-top: 0px;
+    padding-top: 75px;
   }
 
 li .li-list-group a #returnHome {
