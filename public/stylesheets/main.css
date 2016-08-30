@@ -44,6 +44,10 @@ body {
 	padding: 14px 14px 14px 0px;
 	border-right: 2px solid #fff;
 }
+
+div.homepage {
+	padding-top: 105px;
+}
 .thumbnail img {
 	padding: 0 8px 0 8px;
 	width: 100%;
