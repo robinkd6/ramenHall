@@ -31,6 +31,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 		name: name,
 		image: image,
 		description: desc,
+		location: location,
 		price: price,
 		author: author
 	};
