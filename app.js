@@ -11,14 +11,13 @@ var express          = require("express"),
 		User             = require("./models/user"),
 		seedDB					 = require("./seeds");
 
+		
+mongoose.connect(process.env.DATABASEURL);
 
 //require routes
 var commentRoutes 	 = require("./routes/comments"),
 		ramenRoutes 		 = require("./routes/ramenspots"),
 		authRoutes  		 = require("./routes/index");
-
-// mongoose.connect("mongodb://robin_ramen:kb24233215AA@ds019076.mlab.com:19076/ramenhall");
-mongoose.connect(process.env.DATABASEURL);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
