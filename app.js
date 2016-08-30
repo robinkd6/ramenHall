@@ -55,7 +55,7 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.use("/", authRoutes);
+app.use(authRoutes);
 app.use("/ramenspot", ramenRoutes);
 app.use("/ramenspot/:id/comments", commentRoutes);
 
