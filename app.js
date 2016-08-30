@@ -55,10 +55,12 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.use(authRoutes);
+app.use("/", authRoutes);
 app.use("/ramenspot", ramenRoutes);
 app.use("/ramenspot/:id/comments", commentRoutes);
 
-app.listen(3000);
+app.listen(process.env.PORT, process.env.IP, function(){
+   console.log("The Server Has Started!");
+});
 
 
