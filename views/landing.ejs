@@ -1,15 +1,47 @@
 <% include /partials/header %>
 
-<div class="container">
- <div class="row">
- 	<div id="landing" class="col-md-9">
- 		<h1>Welcome to Ramen Hall</h1>
+	<link rel="stylesheet" href="stylesheets/landing.css">
 
-		<a class="location" href="/ramenspot">View Ramen Locations</a>
- 	</div>
-</div>
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="homepage">
+			<h1>Ramen Hall</h1>
+				<h3>Your One Stop Ramen Review</h3>
+				<hr>
+				<button type="button" class="btn btn-info btn-lg" id="howBtn" data-toggle="modal" data-target="#myModal">
+		    About
+				</button>
+				<br>
+				<button type="button" class="btn btn-primary btn-lg" id="try"><a href="/ramenspot">Enter</a></button>
 
- </div>
+  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog modal-sm">
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">How It Works</h4>
+			        </div>
+			        <div class="modal-body">
+			          	<p>From one ramen lover to another - welcome to Ramen Hall!
+									RH is dedicated to ramen shops in the Greater Seattle Area!
+									If you love ramen or if you're just interested on where to find
+									a good bowl - look no further! <a href="/signup">Join</a> if you'd like to share any places or ramen experiences!
+									</p>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>	
+
 
 
 <% include /partials/footer %>
