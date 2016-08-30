@@ -84,6 +84,9 @@ hr {
 	font-family: 'Lato', 'open sans';
 	font-weight: 100;
 }
+button {
+	margin-bottom: 100px;
+}
 
 #howBtn, #try {
 	background: none;
