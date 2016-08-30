@@ -1,14 +1,13 @@
 <% include /partials/header %>
 
-<h1>Log in!</h1>
-
-<form action="/login" method="post">
+<form id="signLog" action="/login" method="post">
+	<h1>Log in</h1>
+	<hr>
 	<div class="form-group">
-	
-	<input type="text" name="username" placeholder="username">
-	<input type="password" name="password" placeholder="password">
+		<input type="text" name="username" placeholder="username">
+		<input type="password" name="password" placeholder="password">
 
-	<input type="submit" name="" value="Log in!">
+		<input id="button" type="submit" name="" value="Login">
 	</div>
 </form>
 

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100,400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,400italic,700italic);
 
 * {
   border-radius: 0 !important;
@@ -7,7 +7,9 @@
 }
 
 body {
-  padding-top: 90px;
+  padding: 120px 0 120px 0;
+  background-color: #fff;
+  overflow: scroll;
 }
 
 .navbar {
@@ -18,17 +20,31 @@ body {
 	border: none;
 }
 .navbar .navbar-brand {
-	color: #ecf0f1;
+	color: #fff;
 	font-size: 2.5em;
 	font-weight: 100;
 }
 /*special effect*/
 .navbar .navbar-brand:hover {
-	color: #000;
+	color: #fff;
 }
 
+.navbar .navbar-right > li > a {
+		color: #fff;
+		background: none;
+		padding-bottom: 5px;
+}
+.navbar .navbar-right > li:hover {
+	border-bottom: 1px solid #fff;
+	background: none;
+}
 
+#brand {
+	padding: 19px 19px 19px 0px;
+	border-right: 2px solid #fff;
+}
 .thumbnail img {
+	padding: 20px;
 	width: 100%;
 }
 
@@ -42,6 +58,97 @@ body {
 
 #delete-form {
 	display: inline;
+}
+
+#landing {
+	border: 10px solid #000;
+	background: #fff;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+}
+
+a.location {
+	color: #000;
+	text-decoration: none;
+}
+
+.lead > a {
+	text-decoration: none;
+	color: #000;
+}
+
+#signLog {
+		text-align: center;
+    width: 500px;
+    padding: 30px;
+    background: #FFFFFF;
+    margin: 50px auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+
+#signLog input {
+	box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  margin-bottom: 10px;
+  font: 16px 'Lato', Arial, Helvetica, sans-serif;
+  height: 45px;
+}
+
+#signLog #button {
+	 -moz-box-shadow: inset 0px 1px 0px 0px #1abc9c;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #1abc9c;
+    box-shadow: inset 0px 1px 0px 0px #1abc9c;
+    background-color: #16a085;
+    border: 1px solid #16a085;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    padding: 8px 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 30%;
+}
+
+#signLog #button:hover {
+	background-color: #1abc9c;
+}
+
+.footer {
+	background: #000;
+	color: #fff;
+	width: 100%;
+	position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+.footer p, a {
+	padding: 15px 0;
+	margin: 0;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 100;
 }
 
 @media (max-width: 979px) {
