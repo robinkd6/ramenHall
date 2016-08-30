@@ -1,17 +1,15 @@
 <% include /partials/header %>
 
-<div class="container">
+<div class="container" id="rsContainer">
 	<header class="jumbotron">
 		<div class="container">
 			<h1>Welcome to Ramen Hall</h1>
-				<p>View Ramen Around Town!</p>
-				<p>
-						<a class="btn btn-primary btn-md" href="/ramenspot/new">Add New Ramen Location</a>
-				</p>
+				<p>Checkout and review ramen shops around Seattle!</p>
 		</div>
-		
+				<p>
+						<a class="btn btn-primary btn-md" href="/ramenspot/new">Add Ramen Review</a>
+				</p>
 	</header>
-
 	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
 			<% rlocations.forEach(function(rlocation){ %>
 				<div class="col-md-3 col-sm-6">
@@ -28,6 +26,7 @@
 			</div>
 			<% }); %>
 	</div>
+
 </div>
 
 <% include /partials/footer %>

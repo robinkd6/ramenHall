@@ -1,5 +1,6 @@
 <% include /partials/header %>
 
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 <div class="container">
 	<div class="row">
 	<h1 style="text-align: center">Edit <%= ramen.name %> </h1>
@@ -13,6 +14,9 @@
 				</div>
 				<div class="form-group">
 						<input class="form-control" type="text" value="<%= ramen.description %>" name="ramen[description]">
+				</div>
+				<div class="form-group">
+						<input class="form-control" type="text" value="<%= ramen.price %>" name="ramen[price]">
 				</div>
 				<div class="form-group">
 					<button class="btn btn-sm btn-primary btn-block">Submit

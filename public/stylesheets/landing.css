@@ -43,12 +43,9 @@ h3 {
 	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
 
 }
-.bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+h4 {
+	text-align: center;
 }
 
 .modal-content {
@@ -86,15 +83,21 @@ h3 {
 	margin-bottom: 10px;
 	border: none;
 	border-radius: 0;
-	font-weight: 200;
+	font-weight: 300;
 	margin-left: 500px;
 	text-decoration: none;
 }
 
-#howBtn:hover,
+
+.join, #howBtn:hover,
 #try>a:hover {
 	color: #000;
+	font-weight: 300;
 	text-decoration: none;
+}
+
+button .navbar-toggle .collapsed {
+	border: solid 1px #000;
 }
 
 body,
@@ -102,4 +105,16 @@ html {
     width: 100%;
     height: 100%;
     /*font-family: "Lato";*/
+}
+
+@media (max-width: 979px) {
+	body{
+		padding-top: 60px;
+		padding-bottom: 60px
+	}
+
+	#howBtn, #try {
+		margin-left: 150px;
+	}
+
 }

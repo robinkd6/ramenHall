@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
 	<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -28,7 +29,7 @@
 						<li><a href="/login">Login</a></li>
 						<li><a href="/signup">Signup</a></li>
 						<% } else { %>
-							<li>Signed in as <%= currentUser.username  %></li>
+							<li id="userLogged">Signed in as <%= currentUser.username  %></li>
 							<li><a href="/logout">Logout</a></li>
 						<%	} %>
 				</ul>

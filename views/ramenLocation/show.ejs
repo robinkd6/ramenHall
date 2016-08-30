@@ -15,14 +15,14 @@
 			<div class="thumbnail">
 				<img class="img-responsive" src="<%= ramen.image %>">
 				<div class="caption-full">
-					<h4 class="pull-right">$12.25</h4>
+					<h4 class="pull-right"><%= ramen.price %></h4>
 					<h4>
 						<%= ramen.name %>
 					</h4>
 					<p><%= ramen.description %></p>
 					<p>
 
-					<em>Submitted By <%= ramen.author.username %></em>
+					<em>Submitted by <%= ramen.author.username %></em>
 						
 					</p>
 						<% if (currentUser && ramen.author.id.equals(currentUser._id)){ %>
