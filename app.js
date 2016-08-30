@@ -17,8 +17,6 @@ var commentRoutes 	 = require("./routes/comments"),
 		ramenRoutes 		 = require("./routes/ramenspots"),
 		authRoutes  		 = require("./routes/index");
 
-
-mongoose.Promise = global.Promise;
 // mongoose.connect("mongodb://localhost/ramen_hall");
 mongoose.connect("mongodb://robin_ramen:kb24233215AA@ds019076.mlab.com:19076/ramenhall");
 
