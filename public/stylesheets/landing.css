@@ -13,7 +13,7 @@ body {
     -webkit-transform:translate3d(0,0,0);
 }
 
-
+/*Layout for page*/
 #homepage {
 	border: 2px solid #000;
 	background: #fff;
@@ -26,14 +26,14 @@ body {
   left: 50%;
   margin: -100px 0 0 -150px;
 }
-
+/* */
 #landing p > a {
 	color: #000;
 	font-weight: 800;
 	text-decoration: none;
 }
 
-
+/* Landing title RAMEN HALL*/
 h1 {
 	text-align: center;
 	color: #fff;
@@ -42,6 +42,7 @@ h1 {
 	font-weight: 800;
 	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
 }
+
 h3 {
 	font-family: 'Lato', 'sans-serif';
 	text-align: center;
@@ -49,7 +50,7 @@ h3 {
 	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
 
 }
-
+/* Modal title */
 h4 {
 	font-family: 'Lato', 'sans-serif';
 	text-align: center;
@@ -58,6 +59,12 @@ h4 {
 hr {
 	width: 55%;
 }
+
+/* Modal styling */
+.modal-header {
+	height: 55px;
+}
+
 .modal-content {
 	border-radius: 0;
 }

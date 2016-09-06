@@ -11,13 +11,11 @@ var express          = require("express"),
 		User             = require("./models/user"),
 		seedDB					 = require("./seeds");
 
-		
-mongoose.connect(process.env.DATABASEURL);
-
 //require routes
 var commentRoutes 	 = require("./routes/comments"),
 		ramenRoutes 		 = require("./routes/ramenspots"),
 		authRoutes  		 = require("./routes/index");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -54,6 +52,9 @@ app.use(function(req, res, next) {
 app.use(authRoutes);
 app.use("/ramenspot", ramenRoutes);
 app.use("/ramenspot/:id/comments", commentRoutes);
+
+var url = process.env.DATABASEURL || "mongodb://localhost/ramen_hall";
+mongoose.connect(url);
 
 app.listen(process.env.PORT, process.env.IP, function(){
    console.log("The Server Has Started!");
