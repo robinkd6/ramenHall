@@ -95,6 +95,13 @@ button {
 	margin-bottom: 100px;
 }
 
+.about__enter {
+	padding: none;
+	height: 80px;
+	width: 10%;
+	margin-left: 500px;
+}
+
 #howBtn, #try {
 	background: none;
 	color: #fff;
@@ -105,20 +112,30 @@ button {
 	border-radius: 0;
 	font-weight: 300;
 	margin-left: 500px;
+
 	text-decoration: none;
 	position: fixed;
 }
 
+.icon-bar:active {
+	background: black;
+}
 
-.join, #howBtn:hover,
-#try>a:hover {
+
+.join {
 	color: #000;
-	font-weight: 300;
+	font-weight: 800;
+}
+
+
+#howBtn:hover, #try>a:hover {
+	color: #fff;
+	font-weight: 800;
 	text-decoration: none;
 }
 
-button .navbar-toggle .collapsed {
-	border: solid 1px #000;
+.navbar-default .navbar-toggle {
+	border-color: #ddd;
 }
 
 body,
@@ -128,15 +145,26 @@ html {
     /*font-family: "Lato";*/
 }
 
-@media (min-width : 320px) and (max-width: 767px) {
+@media only screen and (min-width : 320px) 
+and (max-width: 767px) {
+
+
 	body{
 		padding-top: 60px;
-		padding-bottom: 60px
+		padding-bottom: 60px;
+		width: 100%;
+	}
+	h1 {
+		font-size: 7em;
 	}
 
 	#howBtn, #try {
-		margin-left: 140px;
-		position: fixed; ;
-	}
+		font-size: 1.4em;
+	 	margin-left: 131px;
+	 
+	 }
+  }
+ 
+
 
 }
