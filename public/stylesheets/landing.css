@@ -138,6 +138,12 @@ button {
 	border-color: #ddd;
 }
 
+.navbar-default .navbar-toggle > a {
+	  color: #fff;
+    margin-left: 280px;
+    text-decoration: none;
+}
+
 body,
 html {
     width: 100%;

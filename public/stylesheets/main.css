@@ -34,6 +34,7 @@ body {
 		color: #fff;
 		background: none;
 		padding-bottom: 5px;
+
 }
 .navbar .navbar-right > li:hover {
 	border-bottom: 1px solid #fff;
@@ -213,12 +214,34 @@ li .li-list-group a #returnHome {
 		padding-top: 60px;
 		padding-bottom: 60px
 	}
+
+	.navbar-header {
+
+	}
  
   h1 {
   	font-family: sans-serif;
   }
-	
 
+	.navbar .navbar-right > li > a {
+		color: #fff;
+		background: none;
+		padding-bottom: 5px;
+		margin-left: 280px;
+		border-bottom: none;
+}
 
+.navbar .navbar-right > li > a:hover {
+	color: #fff;
+	border-style: none;
+	font-size: 1.2em;
+}
 
+#brand {
+	padding: 15px 10px 15px 0px;
+	border-right: none;
+}
+
+.navbar-header {
+	padding-bottom: 10px;
 }
