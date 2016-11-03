@@ -151,8 +151,8 @@ html {
     font-family: "Lato";
 }
 
-@media only screen and (min-width : 320px) 
-and (max-width: 767px) {
+@media only screen and (min-width : 360px) 
+and (max-width: 680px) {
 
 
 	body{
@@ -176,7 +176,7 @@ and (max-width: 767px) {
 	.footer {
 		background: #000;
 		color: #fff;
-		width: 100%;
+		width: 50%;
 		position: fixed;
 	  right: 0;
 	  bottom: 0;
