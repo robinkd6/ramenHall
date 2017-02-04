@@ -57,7 +57,7 @@ var url = process.env.DATABASEURL || "mongodb://localhost/ramen_hall";
 mongoose.connect(url);
 
 
-app.listen(process.env.IP || 3000, function(){
+app.listen(process.env.PORT || 3000, function(){
    console.log("The Server Has Started!");
 });
 
