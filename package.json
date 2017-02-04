@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
+  "engines": {
+    "node": "4.2.1",
+    "npm": "3.10.6"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robinkd6/ramenHall.git"
